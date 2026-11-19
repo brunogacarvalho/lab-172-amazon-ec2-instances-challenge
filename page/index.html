@@ -1,0 +1,175 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Lab 172 - Configuração de rede AWS e implantação de aplicação web em instância Amazon EC2.">
+  <title>Lab 172 | Amazon EC2 Challenge</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="container">
+      <span class="tag">AWS CLOUD LAB</span>
+      <h1>Amazon EC2 Instances Challenge</h1>
+      <p class="subtitle">Lab 172 - Configuração de infraestrutura e implantação de servidor web</p>
+      <div class="hero-line"></div>
+      <p class="intro">
+        Neste laboratório, pratiquei a criação de uma VPC e subnet pública,
+        a configuração de conectividade com a internet e o provisionamento
+        de uma instância Amazon EC2. Também utilizei User Data para instalar
+        o Apache e publiquei uma página web acessível pelo IPv4 público.
+      </p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="section">
+      <h2>Atividades realizadas</h2>
+      <div class="cards-grid">
+        <article class="info-card">
+          <span class="card-number">01</span>
+          <h3>VPC e subnet pública</h3>
+          <p>Criação da rede virtual, subnet, Internet Gateway e tabela de rotas para permitir conectividade externa.</p>
+        </article>
+        <article class="info-card">
+          <span class="card-number">02</span>
+          <h3>Security Group</h3>
+          <p>Configuração das regras de entrada para permitir conexões SSH na porta 22 e HTTP na porta 80.</p>
+        </article>
+        <article class="info-card">
+          <span class="card-number">03</span>
+          <h3>Instância Amazon EC2</h3>
+          <p>Provisionamento de uma instância com Amazon Linux, IPv4 público e configuração de User Data.</p>
+        </article>
+        <article class="info-card">
+          <span class="card-number">04</span>
+          <h3>Servidor web Apache</h3>
+          <p>Instalação e inicialização do Apache, publicação do arquivo projects.html e teste de acesso pelo navegador.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section learning">
+      <h2>O que aprendi</h2>
+      <ul>
+        <li>Criar uma VPC e uma subnet pública com endereçamento IPv4.</li>
+        <li>Configurar Internet Gateway e tabela de rotas para acesso à internet.</li>
+        <li>Controlar o tráfego de entrada utilizando regras de Security Group.</li>
+        <li>Provisionar uma instância EC2 com configuração de User Data.</li>
+        <li>Automatizar a instalação e inicialização do Apache com comandos Linux.</li>
+        <li>Publicar e acessar uma aplicação web pelo endereço IPv4 público da instância.</li>
+      </ul>
+    </section>
+
+    <section class="section flashcards-section">
+      <h2>Teste seus conhecimentos</h2>
+      <p class="section-description">Revise os principais conceitos deste laboratório com 8 flashcards interativos.</p>
+
+      <div class="flashcard">
+        <div class="flashcard-top">
+          <span>FLASHCARD</span>
+          <span id="counter">1 / 8</span>
+        </div>
+        <div class="flashcard-content">
+          <h3 id="question">O que é uma VPC na AWS?</h3>
+          <p id="answer" class="answer hidden"></p>
+        </div>
+        <button id="show-answer" class="answer-button">Mostrar resposta</button>
+        <div class="flashcard-navigation">
+          <button id="previous" class="nav-button" disabled>Anterior</button>
+          <button id="next" class="nav-button">Próximo</button>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>Lab 172 - Amazon EC2 Instances Challenge</p>
+      <p>Formação em Computação em Nuvem | Escola da Nuvem</p>
+      <a href="https://github.com/brunogacarvalho/amazon-ec2-instances-challenge" target="_blank" rel="noopener noreferrer">Ver repositório no GitHub</a>
+    </footer>
+  </main>
+
+  <script>
+    const flashcards = [
+      {
+        question: "O que é uma VPC na AWS?",
+        answer: "É uma rede virtual isolada na AWS, onde podemos organizar recursos e configurar endereçamento IP."
+      },
+      {
+        question: "Qual é a característica de uma subnet pública?",
+        answer: "Possui uma rota para um Internet Gateway, permitindo comunicação com a internet quando os recursos têm endereço público."
+      },
+      {
+        question: "Qual é a função do Internet Gateway?",
+        answer: "Permitir a comunicação entre recursos da VPC e a internet."
+      },
+      {
+        question: "Para que serve uma tabela de rotas?",
+        answer: "Define para onde o tráfego de rede da subnet deve ser encaminhado."
+      },
+      {
+        question: "Quais portas foram liberadas no Security Group?",
+        answer: "Porta 22 para SSH e porta 80 para HTTP."
+      },
+      {
+        question: "O que é User Data em uma instância EC2?",
+        answer: "É um recurso que executa comandos ou scripts automaticamente durante a inicialização da instância."
+      },
+      {
+        question: "Para que servem os comandos systemctl start e enable httpd?",
+        answer: "start inicia o Apache imediatamente; enable configura sua inicialização automática com o sistema."
+      },
+      {
+        question: "Onde foi publicada a página projects.html?",
+        answer: "No diretório /var/www/html, utilizado pelo Apache para disponibilizar arquivos do site."
+      }
+    ];
+
+    let current = 0;
+    let revealed = false;
+
+    const question = document.getElementById("question");
+    const answer = document.getElementById("answer");
+    const counter = document.getElementById("counter");
+    const showButton = document.getElementById("show-answer");
+    const previousButton = document.getElementById("previous");
+    const nextButton = document.getElementById("next");
+
+    function renderCard() {
+      question.textContent = flashcards[current].question;
+      answer.textContent = flashcards[current].answer;
+      answer.classList.add("hidden");
+      showButton.textContent = "Mostrar resposta";
+      counter.textContent = `${current + 1} / ${flashcards.length}`;
+      previousButton.disabled = current === 0;
+      nextButton.disabled = current === flashcards.length - 1;
+      revealed = false;
+    }
+
+    showButton.addEventListener("click", () => {
+      revealed = !revealed;
+      answer.classList.toggle("hidden", !revealed);
+      showButton.textContent = revealed ? "Ocultar resposta" : "Mostrar resposta";
+    });
+
+    previousButton.addEventListener("click", () => {
+      if (current > 0) {
+        current--;
+        renderCard();
+      }
+    });
+
+    nextButton.addEventListener("click", () => {
+      if (current < flashcards.length - 1) {
+        current++;
+        renderCard();
+      }
+    });
+
+    renderCard();
+  </script>
+</body>
+</html>
