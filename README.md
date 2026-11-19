@@ -1,4 +1,4 @@
-# Lab 172 - Amazon EC2 Instances (Challenge)
+# Lab 9 - Lab 172 - Amazon EC2 Instances (Challenge)
 
 ## Visão geral
 
