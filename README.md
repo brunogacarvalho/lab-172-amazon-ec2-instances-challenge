@@ -49,14 +49,18 @@ O acesso à instância foi realizado pelo EC2 Instance Connect. A aplicação fo
 
 ![Aplicação web](images/03_web_application.png)
 
-## Página do laboratório
+## Página do projeto
 
-[**Acessar página do laboratório**](https://brunogacarvalho.github.io/amazon-ec2-instances-challenge/)
+[**Acessar GitHub Pages**](https://brunogacarvalho.github.io/amazon-ec2-instances-challenge/)
+
+A página apresenta um resumo do laboratório e, ao final, disponibiliza 8 flashcards interativos para revisar os principais conceitos de Amazon EC2, VPC, subnet, Security Group e Apache.
 
 ## Créditos
 
-- **Professor:** Raphael Ohlsen
-- **Instituição:** Escola da Nuvem
+Laboratório realizado durante a formação em Computação em Nuvem (AWS re/Start) da **Escola da Nuvem**.
+
+- Professor: [Raphael Ohlsen](https://linkedin.com/)
+- Instituição: [Escola da Nuvem](https://escoladanuvem.org/) | [LinkedIn da Escola da Nuvem](https://linkedin.com/)
 
 Laboratório realizado como parte da formação em Computação em Nuvem AWS.
 
